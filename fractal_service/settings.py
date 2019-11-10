@@ -1,4 +1,5 @@
 import dj_database_url
+from dotenv import load_dotenv
 """
 Django settings for fractal_service project.
 
@@ -15,6 +16,14 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv()
+
+APP_ENV = os.environ.get('APP_ENV')
+DB_NAME = os.environ.get('DB_NAME')
+DB_USER = os.environ.get('DB_USER')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = int(os.environ.get('DB_PORT', 5432))
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +35,10 @@ SECRET_KEY = '5@26m1zo#8f&odd%kf_svj6g@&rc%5mfqc)k6!6!^2()97ie@m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fractel-service.herokuapp.com']
+ALLOWED_HOSTS = []
+
+if APP_ENV != 'local':
+    ALLOWED_HOSTS = ['fractel-service.herokuapp.com']
 
 
 # Application definition
@@ -77,13 +89,21 @@ WSGI_APPLICATION = 'fractal_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
+        'TEST': {
+            'MIRROR': 'default',
+        },
     }
 }
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+if APP_ENV != 'local':
+    db_from_env = dj_database_url.config()
+    DATABASES['default'].update(db_from_env)
 
 
 # Password validation
