@@ -17,7 +17,7 @@ class Buckets(BaseModel):
 
 
 class ToDOs(BaseModel):
-    name = models.TextField()
+    name = models.CharField(max_length=255, null=False, blank=False)
     bucket = models.ForeignKey(Buckets, models.CASCADE, null=False, blank=False)
 
     class Meta:
