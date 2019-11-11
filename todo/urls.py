@@ -5,5 +5,5 @@ from .views import ToDo
 urlpatterns = [
     re_path(r'$',
             csrf_exempt(ToDo.as_view()),
-            name="Todo-Info")
+            name="Todo")
 ]
