@@ -163,7 +163,3 @@ CORS_ALLOW_HEADERS = (
     'authorization',
     'x-csrftoken',
 )
-
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000'
-)
