@@ -37,8 +37,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['fractel-service.herokuapp.com']
 
-if APP_ENV != 'local':
-    ALLOWED_HOSTS = []
+# if APP_ENV != 'local':
+#     ALLOWED_HOSTS = []
 
 
 # Application definition
