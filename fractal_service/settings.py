@@ -35,10 +35,10 @@ SECRET_KEY = '5@26m1zo#8f&odd%kf_svj6g@&rc%5mfqc)k6!6!^2()97ie@m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fractel-service.herokuapp.com']
+ALLOWED_HOSTS = []
 
-# if APP_ENV != 'local':
-#     ALLOWED_HOSTS = []
+if APP_ENV != 'local':
+    ALLOWED_HOSTS = ['fractel-service.herokuapp.com']
 
 
 # Application definition
