@@ -38,7 +38,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 if APP_ENV != 'local':
-    ALLOWED_HOSTS = ['fractel-service.herokuapp.com']
+    ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'fractal_service.middleware.LoginMiddleware'
+    'fractal_service.middleware.ParseRequest'
 ]
 
 ROOT_URLCONF = 'fractal_service.urls'
@@ -152,3 +152,18 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=todo',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken',
+)
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000'
+)

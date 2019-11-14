@@ -1,3 +1,4 @@
+import traceback
 from datetime import datetime
 from decimal import Decimal
 from functools import wraps
@@ -75,6 +76,9 @@ class Validator():
             }]
         '''
         for params in required_params_with_type:
+            print('params'+str(params))
+
+        for params in required_params_with_type:
             key = params['field_name']
             key_type = params['type']
             enum_list = params.get('choices', ())
@@ -92,7 +96,7 @@ class Validator():
                     raise InvalidRequest('{} is missing in request body'.format(
                         key
                     ))
-            return True
+        return True
 
     def __call__(self, func, *args, **kwargs):
         @wraps(func, assigned=available_attrs(func))
@@ -108,8 +112,9 @@ class Validator():
                     status=422
                 )
             except Exception as e:
+                msg = traceback.format_exc()
                 return JsonResponse(data={
-                    'msg': str(e)
+                    'msg': msg
                 },
                     status=500
                 )

@@ -1,26 +1,32 @@
 CREATE_TODO = [{
-    'field_name': 'bucket__name',
+    'field_name': 'bucketName',
     'type': str,
 }, {
     'field_name': 'name',
     'type': str,
 }, {
-    'field_name': 'bucket__id',
+    'field_name': 'done',
+    'type': bool,
+}, {
+    'field_name': 'bucketId',
     'type': int,
-    'required': False
+    'required': False,
+    'blank': (True,)
 }]
 
 UPDATE_TODO = [{
-    'field_name': 'id',
-    'type': int,
-}, {
     'field_name': 'name',
     'type': str,
 }, {
-    'field_name': 'bucket__id',
-    'type': int,
+    'field_name': 'done',
+    'type': bool,
     'required': False
 }, {
-    'field_name': 'bucket__name',
-    'type': int
+    'field_name': 'bucketId',
+    'type': int,
+    'required': False,
+    'blank': (True,)
+}, {
+    'field_name': 'bucketName',
+    'type': str
 }]
