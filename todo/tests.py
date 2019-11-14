@@ -54,7 +54,7 @@ class ToDoTest(TestCase):
             "bucketId": 1,
             "bucketName": "Tuesday"
         }
-        response = self.client.put(self.url+'1',
+        response = self.client.put(self.url+'40',
                                    follow='True',
                                    data=json.dumps(req_body),
                                    content_type='application/json',
@@ -67,7 +67,7 @@ class ToDoTest(TestCase):
             "done": True,
             "bucketName": "Tuesday"
         }
-        response = self.client.put(self.url+'1',
+        response = self.client.put(self.url+'40',
                                    follow='True',
                                    data=json.dumps(req_body),
                                    content_type='application/json',
@@ -75,7 +75,7 @@ class ToDoTest(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_delete_todo(self):
-        response = self.client.delete(self.url+'1',
+        response = self.client.delete(self.url+'40',
                                       follow='True',
                                       content_type='application/json',
                                       )

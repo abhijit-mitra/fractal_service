@@ -76,9 +76,6 @@ class Validator():
             }]
         '''
         for params in required_params_with_type:
-            print('params'+str(params))
-
-        for params in required_params_with_type:
             key = params['field_name']
             key_type = params['type']
             enum_list = params.get('choices', ())
